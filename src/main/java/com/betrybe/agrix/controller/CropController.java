@@ -3,11 +3,13 @@ package com.betrybe.agrix.controller;
 import com.betrybe.agrix.controller.dto.CropDto;
 import com.betrybe.agrix.service.CropService;
 import com.betrybe.agrix.service.exception.CropNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -52,5 +54,22 @@ public class CropController {
   @GetMapping("/{id}")
   public CropDto getCropById(@PathVariable Long id) throws CropNotFoundException {
     return CropDto.fromEntity(cropService.findById(id));
+  }
+
+  /**
+   * Gets crop by harvest date.
+   *
+   * @param start the start
+   * @param end   the end
+   * @return the crop by harvest date
+   */
+  @GetMapping("/search")
+  public List<CropDto> getCropByHarvestDate(
+      @RequestParam LocalDate start, @RequestParam LocalDate end
+  ) {
+    return cropService.findByHarvestDate(start, end)
+        .stream()
+        .map(CropDto::fromEntity)
+        .toList();
   }
 }
