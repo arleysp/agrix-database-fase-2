@@ -31,5 +31,5 @@ public class FertilizerService {
    */
   public Fertilizer createFertilizer(Fertilizer fertilizer) {
     return fertilizerRepository.save(fertilizer);
-  };
+  }
 }
