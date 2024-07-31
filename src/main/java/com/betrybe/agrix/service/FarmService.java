@@ -32,7 +32,7 @@ public class FarmService {
   }
 
   /**
-   * Create farm farm.
+   * Create farm.
    *
    * @param farm the farm
    * @return the farm
