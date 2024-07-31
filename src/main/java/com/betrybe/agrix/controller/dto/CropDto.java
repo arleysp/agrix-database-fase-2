@@ -7,7 +7,12 @@ import java.time.LocalDate;
  * The type Crop dto.
  */
 public record CropDto(
-    Long id, String name, Double plantedArea, Long farmId, LocalDate plantedDate, LocalDate harvestDate
+    Long id,
+    String name,
+    Double plantedArea,
+    Long farmId,
+    LocalDate plantedDate,
+    LocalDate harvestDate
 ) {
 
   /**
