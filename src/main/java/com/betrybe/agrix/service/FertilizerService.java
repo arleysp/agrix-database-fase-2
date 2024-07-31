@@ -2,6 +2,8 @@ package com.betrybe.agrix.service;
 
 import com.betrybe.agrix.entity.Fertilizer;
 import com.betrybe.agrix.repository.FertilizerRepository;
+import com.betrybe.agrix.service.exception.FertilizerNotFoundException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +33,26 @@ public class FertilizerService {
    */
   public Fertilizer createFertilizer(Fertilizer fertilizer) {
     return fertilizerRepository.save(fertilizer);
+  }
+
+  /**
+   * Find all list.
+   *
+   * @return the list
+   */
+  public List<Fertilizer> findAll() {
+    return fertilizerRepository.findAll();
+  }
+
+  /**
+   * Find by id fertilizer.
+   *
+   * @param id the id
+   * @return the fertilizer
+   * @throws FertilizerNotFoundException the fertilizer not found exception
+   */
+  public Fertilizer findById(Long id) throws FertilizerNotFoundException {
+    return fertilizerRepository.findById(id)
+        .orElseThrow(FertilizerNotFoundException::new);
   }
 }
