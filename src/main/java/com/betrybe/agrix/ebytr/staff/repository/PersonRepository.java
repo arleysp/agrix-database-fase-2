@@ -9,5 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
+  /**
+   * Find by username optional.
+   *
+   * @param username the username
+   * @return the optional
+   */
   Optional<Person> findByUsername(String username);
 }

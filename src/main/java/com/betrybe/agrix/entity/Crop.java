@@ -38,6 +38,8 @@ public class Crop {
    *
    * @param name        the name
    * @param plantedArea the planted area
+   * @param plantedDate the planted date
+   * @param harvestDate the harvest date
    */
   public Crop(String name, Double plantedArea, LocalDate plantedDate, LocalDate harvestDate) {
     this.name = name;
@@ -118,18 +120,38 @@ public class Crop {
     this.farm = farm;
   }
 
+  /**
+   * Gets planted date.
+   *
+   * @return the planted date
+   */
   public LocalDate getPlantedDate() {
     return plantedDate;
   }
 
+  /**
+   * Sets planted date.
+   *
+   * @param plantedDate the planted date
+   */
   public void setPlantedDate(LocalDate plantedDate) {
     this.plantedDate = plantedDate;
   }
 
+  /**
+   * Gets harvest date.
+   *
+   * @return the harvest date
+   */
   public LocalDate getHarvestDate() {
     return harvestDate;
   }
 
+  /**
+   * Sets harvest date.
+   *
+   * @param harvestDate the harvest date
+   */
   public void setHarvestDate(LocalDate harvestDate) {
     this.harvestDate = harvestDate;
   }
