@@ -32,7 +32,9 @@ public class CropController {
    * @param cropService the crop service
    */
   @Autowired
-  public CropController(CropService cropService) {this.cropService = cropService;}
+  public CropController(CropService cropService) {
+    this.cropService = cropService;
+  }
 
   /**
    * Gets all crops.
