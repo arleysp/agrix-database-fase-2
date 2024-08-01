@@ -4,7 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Fertilizer.
@@ -20,6 +23,9 @@ public class Fertilizer {
   private String name;
   private String brand;
   private String composition;
+
+  @ManyToMany(mappedBy = "fertilizers")
+  private List<Crop> crops = new ArrayList<>();
 
   /**
    * Instantiates a new Farm.
@@ -110,5 +116,23 @@ public class Fertilizer {
    */
   public void setComposition(String composition) {
     this.composition = composition;
+  }
+
+  /**
+   * Gets crops.
+   *
+   * @return the crops
+   */
+  public List<Crop> getCrops() {
+    return crops;
+  }
+
+  /**
+   * Sets crops.
+   *
+   * @param crops the crops
+   */
+  public void setCrops(List<Crop> crops) {
+    this.crops = crops;
   }
 }
