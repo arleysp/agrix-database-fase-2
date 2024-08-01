@@ -79,7 +79,21 @@ public class CropService {
 
     crop.getFertilizers().add(fertilizer);
 
+    cropRepository.save(crop);
+
     return "Fertilizante e plantação associados com sucesso!";
 
+  }
+
+  /**
+   * Gets fertilizers by crops.
+   *
+   * @param cropId the crop id
+   * @return the fertilizers by crops
+   * @throws CropNotFoundException the crop not found exception
+   */
+  public List<Fertilizer> getFertilizersByCrops(Long cropId) throws CropNotFoundException {
+    Crop crop = findById(cropId);
+    return crop.getFertilizers();
   }
 }

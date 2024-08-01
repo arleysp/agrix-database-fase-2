@@ -1,6 +1,7 @@
 package com.betrybe.agrix.controller;
 
 import com.betrybe.agrix.controller.dto.CropDto;
+import com.betrybe.agrix.controller.dto.FertilizerDto;
 import com.betrybe.agrix.service.CropService;
 import com.betrybe.agrix.service.exception.CropNotFoundException;
 import com.betrybe.agrix.service.exception.FertilizerNotFoundException;
@@ -75,6 +76,15 @@ public class CropController {
         .toList();
   }
 
+  /**
+   * Create crops and fertilizers string.
+   *
+   * @param cropId       the crop id
+   * @param fertilizerId the fertilizer id
+   * @return the string
+   * @throws CropNotFoundException       the crop not found exception
+   * @throws FertilizerNotFoundException the fertilizer not found exception
+   */
   @PostMapping("/{cropId}/fertilizers/{fertilizerId}")
   @ResponseStatus(HttpStatus.CREATED)
   public String createCropsAndFertilizers(
@@ -82,5 +92,19 @@ public class CropController {
       @PathVariable Long fertilizerId
   ) throws CropNotFoundException, FertilizerNotFoundException {
     return cropService.createCropsAndFertilizers(cropId, fertilizerId);
+  }
+
+  /**
+   * Gets fertilizers by crops.
+   *
+   * @param cropId the crop id
+   * @return the fertilizers by crops
+   * @throws CropNotFoundException the crop not found exception
+   */
+  @GetMapping("/{cropId}/fertilizers")
+  public List<FertilizerDto> getFertilizersByCrops(@PathVariable Long cropId)
+      throws CropNotFoundException {
+    return cropService.getFertilizersByCrops(cropId)
+        .stream().map(FertilizerDto::fromEntity).toList();
   }
 }
